@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-// import Button from 'material-ui/Button';
-import Grid from 'material-ui/Grid';
 import TodoList from './components/TodoList'
 import Nav from './components/Nav'
 import TodoModal from './components/TodoModal'
-import TodoInput from './components/TodoInput'
-
-import Snackbar from 'material-ui/Snackbar';
+// import Snackbar from 'material-ui/Snackbar';
 
 
 import './App.css';
@@ -40,38 +36,27 @@ class App extends Component {
 
   addTask = (e) => {
     e.preventDefault();
-    let todo = {
-      task: e.target.task.value,
-      complete: false
+    if (e.target.task.value !== '') {
+      let todo = {
+        task: e.target.task.value,
+        complete: false
+      }
+      this.setState({
+        todos: this.state.todos.concat(todo)
+      })
     }
-    this.setState({
-      todos: this.state.todos.concat(todo)
-    })
     e.target.task.value = ""
   }
 
   delTask = (todo) => {
-    // need to get key i from item 
-    // let todos = this.state.todos.slice();
-    //     todos.splice(id, 1);
-    // let todos = this.state.todos.filter((todo) => {
-    //   return todo
-    // })
-    // // this.state.todos.splice(id, 1);
-    // this.setState({
-    //   todos: this.state.todos
-    // });
-    console.log('removed:', todo);
-    
-    // // e.preventDefault()
-    // console.log(e);
-    // this.setState({
-    //   todos: this.state.todos.filter(del => del !== e)
-    //   // todos: this.state.todos.concat(task)
-    // })
-
+    let todos = this.state.todos.filter((todo) => {
+      return todo.complete === false
+    })
+    this.setState({
+      todos: todos
+    });
+    // render snacks to show 'Completed Todos removed'
     // snacks({ vertical: 'bottom', horizontal: 'center' })
-
   }
 
   toggleTask = (e, i) => {
@@ -79,19 +64,18 @@ class App extends Component {
     todos[i].complete = !todos[i].complete;
     this.setState({
       todos: todos
-
     })
   }
   
-clearTasksx = () => {
+  FilterTask = () => {
 
-}
+  }
 
 
   render() {
     return (
       <div className="App">
-            <Nav/>
+            <Nav delTask={this.delTask}/>
             {/* <TodoInput addTask={this.addTask} /> */}
             <TodoList todos={this.state.todos} toggleTask={this.toggleTask} delTask={this.delTask} />
             <TodoModal addTask={this.addTask} />

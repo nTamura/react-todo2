@@ -1,52 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
 import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import TodoInput from './TodoInput';
 
-function getModalStyle() {
-  const top = 50
-  const left = 50
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-// const styles = StyleSheet.create({
-//   bigblue: {
-//     color: 'blue',
-//     fontWeight: 'bold',
-//     fontSize: 30,
-//   },
-//   red: {
-//     color: 'red',
-//   },
-// });
-
-
-// const styles = theme => ({
-//   paper: {
-//     position: 'absolute',
-//     width: theme.spacing.unit * 50,
-//     backgroundColor: theme.palette.background.paper,
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing.unit * 4,
-//   },
-//   fab: {
-//     position: 'fixed',
-//     bottom: -10,
-//     right: -10,
-//   }
-// });
 class TodoModal extends React.Component {
-  state = {
-    open: false,
-  };
+  state = { open: false };
 
   handleOpen = () => {
     this.setState({ open: true });
@@ -57,7 +16,6 @@ class TodoModal extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
 
     return (
       <div>
@@ -70,10 +28,11 @@ class TodoModal extends React.Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-          <div style={getModalStyle()} 
-          
-          style={styles.modal}>
-          <TodoInput addTask={this.props.addTask} />
+          <div style={styles.modal}>
+            <TodoInput addTask={this.props.addTask} 
+              handleClose={this.handleClose}
+              style={styles.modalInput} 
+            />
           </div>
         </Modal>
       </div>
@@ -81,20 +40,21 @@ class TodoModal extends React.Component {
   }
 }
 
-
 const styles = {
-
   modal: {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
     position: 'absolute',
-    width: '100%',
+    width: '80%',
     backgroundColor: 'white',
-    /* boxShadow: theme.shadows[5], */
-    padding: 10 * 4
+    // boxShadow: '5 10 8 #888888',
+    padding: 30
+  },
+  modalInput: {
     
   },
+
   addButton: {
     position: 'fixed',
     bottom: 30,
@@ -102,13 +62,4 @@ const styles = {
   }
 }
 
-
-// SimpleModal.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
-// // We need an intermediary variable for handling the recursive nesting.
-// const SimpleModalWrapped = withStyles(styles)(SimpleModal);
-
 export default TodoModal;
-// export default SimpleModalWrapped;

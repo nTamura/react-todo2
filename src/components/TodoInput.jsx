@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
 
 class TodoInput extends Component {
+
+  // handleSubmit = (e) => {
+  //   // on form submit, page refreshes, need to chain modal close 
+  //   e.preventDefault;
+    
+  //   this.props.addTask;
+  //   this.props.handleClose
+  // }
+
   render() {
+    const { addTask } = this.props
+
     return (
       
-      <form onSubmit={this.props.addTask}>
-        <TextField id="full-width" InputLabelProps={{
-            shrink: true,
-          }}
+      <form onSubmit={addTask}>
+        <TextField 
           placeholder="Add a todo item"
-          // fullWidth
+          fullWidth
+          autoFocus
           margin="normal"
           name="task"
+          style={styles.input}
         />
-        <Button variant="raised" type="submit">
-          Submit
-        </Button>
-
-        {/* <Button variant="fab" color="primary">
-        <Icon color="action">edit</Icon>
-      </Button>
-          use for modal add task 
-      */}
       </form>
     );
   }
 }
 
+const styles = {
+  input: {
+
+  }
+}
 export default TodoInput;

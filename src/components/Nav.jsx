@@ -4,7 +4,6 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
-import IconButton from 'material-ui/IconButton';
 import Tooltip from 'material-ui/Tooltip';
 
 const styles = {
@@ -24,12 +23,14 @@ const Nav = (props) => {
             </Button>
           </Tooltip>
 
-          <Typography variant="title" color="inherit"  style={styles.flex}>
+          <Typography variant="title" color="inherit"  
+            style={styles.flex}
+          >
             React-Todo App
           </Typography>
 
           <Tooltip title="Clear Done">
-            <Button size="small">
+            <Button size="small" onClick={props.delTask}>
               <Icon color="action">delete</Icon>
             </Button>
           </Tooltip>
