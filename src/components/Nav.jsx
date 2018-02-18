@@ -1,47 +1,42 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import Icon from 'material-ui/Icon';
 import IconButton from 'material-ui/IconButton';
-// import MenuIcon from 'material-ui-icons/Menu';
+import Tooltip from 'material-ui/Tooltip';
 
 const styles = {
-  root: {
-    width: '100%',
-  },
   flex: {
     flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
+  }
 };
 
 const Nav = (props) => {
-  const { classes } = props;
   return (
-    <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-            {/* <MenuIcon /> */}
-          </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
+
+          <Tooltip title="Filter Tasks">
+            <Button size="small">
+              <Icon color="action">find_replace</Icon>
+            </Button>
+          </Tooltip>
+
+          <Typography variant="title" color="inherit"  style={styles.flex}>
             React-Todo App
           </Typography>
-          <Button color="inherit">Login</Button>
+
+          <Tooltip title="Clear Done">
+            <Button size="small">
+              <Icon color="action">delete</Icon>
+            </Button>
+          </Tooltip>
+
         </Toolbar>
       </AppBar>
-    </div>
   );
 }
 
-Nav.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Nav);
+export default Nav;

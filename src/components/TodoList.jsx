@@ -9,7 +9,13 @@ class TodoList extends Component {
     const { todos } = this.props
 
     const todoMap = todos.map((todo, i) => {
-      return <TodoItem todo={todo} key={i} delTask={this.props.delTask} />
+      // console.log(i)
+      return (
+        <TodoItem todo={todo} key={i} id={i}
+          delTask={this.props.delTask} 
+          toggleTask={this.props.toggleTask}
+        />
+      )
     });
 
     return (
@@ -21,5 +27,6 @@ class TodoList extends Component {
     );
   }
 }
+
 
 export default TodoList;

@@ -3,25 +3,30 @@ import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import TodoList from './components/TodoList'
 import Nav from './components/Nav'
+import TodoModal from './components/TodoModal'
 import TodoInput from './components/TodoInput'
+
+import Snackbar from 'material-ui/Snackbar';
+
+
 import './App.css';
 
 const todos = [
   {
     task: 'make React todo list',
-    completed: false
+    complete: false
   }, {
     task: 'click on item to complete',
-    completed: false
+    complete: false
   },{
     task: 'style todo list',
-    completed: true
+    complete: true
   },{
     task: 'submit',
-    completed: true
+    complete: true
   },{
     task: 'eat dinner',
-    completed: false
+    complete: false
   }
 ];
 
@@ -34,35 +39,63 @@ class App extends Component {
   }
 
   addTask = (e) => {
-    let task = {
+    e.preventDefault();
+    let todo = {
       task: e.target.task.value,
-      completed: false
+      complete: false
     }
-    e.preventDefault()
     this.setState({
-      todos: this.state.todos.concat(task)
+      todos: this.state.todos.concat(todo)
+    })
+    e.target.task.value = ""
+  }
+
+  delTask = (todo) => {
+    // need to get key i from item 
+    // let todos = this.state.todos.slice();
+    //     todos.splice(id, 1);
+    // let todos = this.state.todos.filter((todo) => {
+    //   return todo
+    // })
+    // // this.state.todos.splice(id, 1);
+    // this.setState({
+    //   todos: this.state.todos
+    // });
+    console.log('removed:', todo);
+    
+    // // e.preventDefault()
+    // console.log(e);
+    // this.setState({
+    //   todos: this.state.todos.filter(del => del !== e)
+    //   // todos: this.state.todos.concat(task)
+    // })
+
+    // snacks({ vertical: 'bottom', horizontal: 'center' })
+
+  }
+
+  toggleTask = (e, i) => {
+    let todos = this.state.todos
+    todos[i].complete = !todos[i].complete;
+    this.setState({
+      todos: todos
+
     })
   }
-  delTask = (e) => {
-    // e.preventDefault()
-    console.log(e);
-    this.setState({
-      todos: this.state.todos.filter(del => del !== e)
-      // todos: this.state.todos.concat(task)
-    })
-  }
+  
+clearTasksx = () => {
+
+}
+
 
   render() {
     return (
       <div className="App">
-        <Grid container spacing={24}>
-        {/* fix container width */}
-          <Grid item xs={12}>
             <Nav/>
-            <TodoInput addTask={this.addTask} />
-            <TodoList todos={this.state.todos} delTask={this.delTask} />
-          </Grid>
-        </Grid>
+            {/* <TodoInput addTask={this.addTask} /> */}
+            <TodoList todos={this.state.todos} toggleTask={this.toggleTask} delTask={this.delTask} />
+            <TodoModal addTask={this.addTask} />
+          
       </div>
     );
   }

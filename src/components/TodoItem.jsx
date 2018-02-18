@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
 import { ListItem } from 'material-ui/List';
-import Button from 'material-ui/Button';
-import Icon from 'material-ui/Icon';
-
 
 class TodoItem extends Component {
+  
+  handleClick = (todo,id) => {
+    this.props.toggleTask(todo,id)
+  }
+
   render() {
-    
-    const { todo, i } = this.props
+    const { todo, id } = this.props
 
     return (
-      <ListItem key={i}>
-        <p style={{ flex: 1 }}>{todo.task}</p>
-        <Button size="small" onClick={() => { this.props.delTask(todo)}} >
-          <Icon color="action">delete</Icon>
-        </Button>
+      <ListItem button 
+        onClick={(e)=>{this.handleClick(todo,id)}} 
+      >
+        <input type="checkbox" 
+          style={styles.checkbox}
+          checked={todo.complete} 
+          onClick={()=>{this.handleClick(todo,id)}}
+          onChange={(e)=>{this.props.toggleTask(todo,id)}}
+        />
+
+        <span style={ todo.complete ? 
+          styles.isComplete : null}
+        >
+          {todo.task}
+        </span>
+
       </ListItem>     
     )
+  }
+}
+
+const styles = {
+  isComplete: {
+    color: 'grey',
+    textDecoration: 'line-through'
+  },
+  checkbox: {
+    marginRight: 20
   }
 }
 
