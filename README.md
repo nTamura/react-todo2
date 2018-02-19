@@ -2,7 +2,7 @@
 Revision of my original Todo App with a Material approach. 
 
 ### Screenshots 
-![screen1](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/screen1.png)
+![screen1](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/screen1.png | width=200)
 *main screen, floating 'add' button*
 
 ![screen2](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/screen2.png)
