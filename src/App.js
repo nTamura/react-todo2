@@ -49,14 +49,7 @@ class App extends Component {
   }
 
   delTask = (todo) => {
-    let todos = this.state.todos.filter((todo) => {
-      return todo.complete === false
-    })
-    this.setState({
-      todos: todos
-    });
-    // render snacks to show 'Completed Todos removed'
-    // snacks({ vertical: 'bottom', horizontal: 'center' })
+    console.log('delete task');
   }
 
   toggleTask = (e, i) => {
@@ -71,11 +64,21 @@ class App extends Component {
 
   }
 
+  clearTasks = () => {
+    let todos = this.state.todos.filter((todo) => {
+      return todo.complete === false
+    })
+    this.setState({
+      todos: todos
+    });
+    // render snacks to show 'Completed Todos removed'
+    // snacks({ vertical: 'bottom', horizontal: 'center' })
+  }
 
   render() {
     return (
       <div className="App">
-            <Nav delTask={this.delTask}/>
+            <Nav delTask={this.clearTasks}/>
             {/* <TodoInput addTask={this.addTask} /> */}
             <TodoList todos={this.state.todos} toggleTask={this.toggleTask} delTask={this.delTask} />
             <TodoModal addTask={this.addTask} />

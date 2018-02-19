@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { ListItem } from 'material-ui/List';
+import { ListItem, ListItemText, ListItemSecondaryAction } from 'material-ui/List';
+import Button from 'material-ui/Button';
+import Icon from 'material-ui/Icon';
+import Tooltip from 'material-ui/Tooltip';
 
 class TodoItem extends Component {
   
@@ -11,7 +14,7 @@ class TodoItem extends Component {
     const { todo, id } = this.props
 
     return (
-      <ListItem button 
+      <ListItem button style={styles.todoItem}
         onClick={(e)=>{this.handleClick(todo,id)}} 
       >
         <input type="checkbox" 
@@ -21,11 +24,18 @@ class TodoItem extends Component {
           onChange={(e)=>{this.props.toggleTask(todo,id)}}
         />
 
-        <span style={ todo.complete ? 
-          styles.isComplete : null}
-        >
-          {todo.task}
-        </span>
+        <ListItemText primary={todo.task} 
+        style={ todo.complete ? styles.isComplete : null} />
+
+        <ListItemSecondaryAction>
+
+          <Tooltip title="Delete item">
+            <Button size="small" style={styles.delete} onClick={this.props.delTask}>
+              <Icon color="action">delete</Icon>
+            </Button>
+          </Tooltip>
+
+        </ListItemSecondaryAction>
 
       </ListItem>     
     )
@@ -33,12 +43,20 @@ class TodoItem extends Component {
 }
 
 const styles = {
+  todoItem: {
+    // marginRight: 20,
+    // marginLeftt: 20
+    },
+  delete: {
+    marginRight: 20
+  },
   isComplete: {
     color: 'grey',
     textDecoration: 'line-through'
   },
   checkbox: {
-    marginRight: 20
+    // marginRight: 20,
+    // marginLeftt: 20
   }
 }
 

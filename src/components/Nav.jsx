@@ -6,12 +6,6 @@ import Button from 'material-ui/Button';
 import Icon from 'material-ui/Icon';
 import Tooltip from 'material-ui/Tooltip';
 
-const styles = {
-  flex: {
-    flex: 1,
-  }
-};
-
 const Nav = (props) => {
   return (
       <AppBar position="static">
@@ -30,8 +24,8 @@ const Nav = (props) => {
           </Typography>
 
           <Tooltip title="Clear Done">
-            <Button size="small" onClick={props.delTask}>
-              <Icon color="action">delete</Icon>
+            <Button size="small" onClick={props.clearTasks}>
+              <Icon color="action">clear_all</Icon>
             </Button>
           </Tooltip>
 
@@ -39,5 +33,11 @@ const Nav = (props) => {
       </AppBar>
   );
 }
+
+const styles = {
+  flex: {
+    flex: 1,
+  }
+};
 
 export default Nav;
