@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import TodoList from './components/TodoList'
 import Nav from './components/Nav'
 import TodoModal from './components/TodoModal'
-// import Snackbar from 'material-ui/Snackbar';
-
+import SnackBar from 'material-ui/Snackbar';
 import './App.css';
 
 const todos = [
@@ -66,7 +65,9 @@ class App extends Component {
   }
   
   FilterTask = () => {
-
+    let todos = this.state.todos.filter((todo) => {
+      return !todo.complete
+    })
   }
 
   clearTasks = () => {
@@ -89,6 +90,7 @@ class App extends Component {
           delTask={this.delTask} 
         />
         <TodoModal addTask={this.addTask} />
+        <SnackBar />
       </div>
     );
   }

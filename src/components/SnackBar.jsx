@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
 
 class SnackBar extends Component {
+  state = {
+    open: true,
+  };
+  handleClick = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+
+    this.setState({ open: false });
+  };
+
   render() {
     return (
-        <Snackbar
+        <SnackBar
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'left',
           }}
           open={this.state.open}
-          autoHideDuration={6000}
+          autoHideDuration={3000}
           onClose={this.handleClose}
-          SnackbarContentProps={{
-            'aria-describedby': 'message-id',
-          }}
+          // SnackbarContentProps={{
+          //   'aria-describedby': 'message-id',
+          // }}
           message={<span id="message-id">Note archived</span>}
           action={[
-            <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
-              UNDO
-            </Button>,
+           
             <IconButton
               key="close"
               aria-label="Close"

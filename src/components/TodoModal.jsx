@@ -46,7 +46,7 @@ const styles = {
     position: 'absolute',
     width: '80%',
     backgroundColor: 'white',
-    borderRadius: 10,
+    borderRadius: 5,
     padding: 30
   },
   modalInput: {

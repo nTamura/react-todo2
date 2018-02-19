@@ -1,7 +1,7 @@
 .App {
   text-align: center;
 }
-.example-enter {
+/* .example-enter {
   opacity: 0.01;
   width: 0px;
 }
@@ -21,4 +21,4 @@
   opacity: 0.01;
   width: 0px;
   transition: 700ms;
-}
+} */

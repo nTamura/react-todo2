@@ -27,7 +27,7 @@ class TodoList extends Component {
           <List> {todoMap} </List>
         ) : (
           <div>
-            <img src={doneDino} style={styles.dino} />
+            <img src={doneDino} style={styles.dino} alt="All done!"/>
             <p>Hooray! There's nothing here</p>
           </div>
         )}
@@ -38,7 +38,7 @@ class TodoList extends Component {
 
 const styles={
   dino: {
-    paddingTop: 40,
+    paddingTop: 20,
     height: 120,
     width: 'auto'
   }
