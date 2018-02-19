@@ -19,15 +19,15 @@ class TodoModal extends React.Component {
 
     return (
       <div>
-        <Button variant="fab" onClick={this.handleOpen} 
-          style={styles.addButton} color='primary'>
+        <Button variant="fab" 
+          onClick={this.handleOpen} 
+          style={styles.addButton} 
+          color='primary'>
           <Icon>edit</Icon>
         </Button>
 
-        <Modal
-          open={this.state.open}
-          onClose={this.handleClose}
-        >
+        <Modal open={this.state.open}
+          onClose={this.handleClose}>
           <div style={styles.modal}>
             <TodoInput addTask={this.props.addTask} 
               handleClose={this.handleClose}

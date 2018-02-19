@@ -4,7 +4,6 @@ import Nav from './components/Nav'
 import TodoModal from './components/TodoModal'
 // import Snackbar from 'material-ui/Snackbar';
 
-
 import './App.css';
 
 const todos = [
@@ -71,24 +70,25 @@ class App extends Component {
   }
 
   clearTasks = () => {
+    // should trigger snacks to show 'Completed todos cleared'
+    // snacks({ vertical: 'bottom', horizontal: 'center' })
     let todos = this.state.todos.filter((todo) => {
-      return todo.complete === false
+      return !todo.complete
     })
     this.setState({
       todos: todos
     });
-    // render snacks to show 'Completed Todos removed'
-    // snacks({ vertical: 'bottom', horizontal: 'center' })
   }
 
   render() {
     return (
       <div className="App">
-            <Nav delTask={this.clearTasks}/>
-            {/* <TodoInput addTask={this.addTask} /> */}
-            <TodoList todos={this.state.todos} toggleTask={this.toggleTask} delTask={this.delTask} />
-            <TodoModal addTask={this.addTask} />
-          
+        <Nav clearTasks={this.clearTasks}/>
+        <TodoList todos={this.state.todos} 
+          toggleTask={this.toggleTask} 
+          delTask={this.delTask} 
+        />
+        <TodoModal addTask={this.addTask} />
       </div>
     );
   }

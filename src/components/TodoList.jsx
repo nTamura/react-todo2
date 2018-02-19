@@ -7,7 +7,8 @@ class TodoList extends Component {
 
   render() {
     const { todos } = this.props
-
+    const allDone = todos.length <= 0
+    
     const todoMap = todos.map((todo, i) => {
       // console.log(i)
       return (
@@ -16,20 +17,22 @@ class TodoList extends Component {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
 
-        <TodoItem todo={todo} key={i} id={i}
-          delTask={this.props.delTask} 
-          toggleTask={this.props.toggleTask}
-          />
+          <TodoItem todo={todo} key={i} id={i}
+            delTask={this.props.delTask} 
+            toggleTask={this.props.toggleTask}
+            />
+   
         </CSSTransitionGroup>
       )
     });
-
+    
     return (
       <div>
-        <List>
-
-          {todoMap}
-        </List>
+        {!allDone ? (
+          <List> {todoMap} </List>
+        ) : (
+          <p>Hooray! There's nothing here 🙌 </p>
+        )}
       </div>
     );
   }
