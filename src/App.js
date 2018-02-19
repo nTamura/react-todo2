@@ -9,19 +9,19 @@ import './App.css';
 
 const todos = [
   {
-    task: 'make React todo list',
-    complete: false
+    task: 'make another React Todo List',
+    complete: true
   }, {
-    task: 'click on item to complete',
+    task: 'use Material-UI',
+    complete: true
+  },{
+    task: 'eat some ramen',
     complete: false
   },{
-    task: 'style todo list',
+    task: '???',
     complete: true
   },{
-    task: 'submit',
-    complete: true
-  },{
-    task: 'eat dinner',
+    task: 'profit!',
     complete: false
   }
 ];
@@ -48,8 +48,14 @@ class App extends Component {
     e.target.task.value = ""
   }
 
-  delTask = (todo) => {
-    console.log('delete task');
+  delTask = (e,i) => {
+    let task = this.state.todos[i]
+    let todos = this.state.todos.filter((todo) => {
+      return todo !== task
+    })
+    this.setState({
+      todos: todos
+    })
   }
 
   toggleTask = (e, i) => {
