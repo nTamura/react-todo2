@@ -16,47 +16,36 @@ class TodoItem extends Component {
 
     return (
       <ListItem button style={styles.todoItem}
-        onClick={(e)=>{this.handleClick(todo,id)}} 
-      >
+        onClick={(e)=>{this.handleClick(todo,id)}} >
         <Checkbox
           style={styles.checkbox}
           checked={todo.complete} 
           onClick={()=>{this.handleClick(todo,id)}}
-          onChange={(e)=>{this.props.toggleTask(todo,id)}}
-        />
-      <ListItemText disableTypography primary={todo.task} 
-        style={ todo.complete ? styles.isComplete : null} />
-
+          onChange={(e)=>{this.props.toggleTask(todo,id)}} />
+        <ListItemText disableTypography 
+          primary={todo.task} 
+          style={ todo.complete ? styles.isComplete : null} />
         <ListItemSecondaryAction>
-
           <Tooltip title="Delete item">
-            <Button size="small" style={styles.delete} onClick={(e) => {this.props.delTask(todo,id)}}>
+            <Button size="small" 
+              style={styles.remove} 
+              onClick={(e) => {this.props.delTask(todo,id)}}>
               <Icon color="action">remove_circle_outline</Icon>
             </Button>
           </Tooltip>
-
         </ListItemSecondaryAction>
-
       </ListItem>     
     )
   }
 }
 
 const styles = {
-  todoItem: {
-    // marginRight: 20,
-    // marginLeftt: 20
-    },
-  delete: {
+  remove: {
     marginRight: 20
   },
   isComplete: {
     color: '#607d8b',
     textDecoration: 'line-through'
-  },
-  checkbox: {
-    // marginRight: 20,
-    // marginLeftt: 20
   }
 }
 

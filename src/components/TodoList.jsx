@@ -2,26 +2,21 @@ import React, { Component } from 'react';
 import List from 'material-ui/List';
 import { CSSTransitionGroup } from 'react-transition-group'
 import TodoItem from './TodoItem'
-
+import doneDino from '../img/doneDino.gif'
 class TodoList extends Component {
 
   render() {
     const { todos } = this.props
-    const allDone = todos.length <= 0
-    
+    const allDone = todos.length <= 0    
     const todoMap = todos.map((todo, i) => {
-      // console.log(i)
       return (
         <CSSTransitionGroup  key={i}
-        transitionName="example"
+          transitionName="example"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}>
-
           <TodoItem todo={todo} key={i} id={i}
             delTask={this.props.delTask} 
-            toggleTask={this.props.toggleTask}
-            />
-   
+            toggleTask={this.props.toggleTask}/>
         </CSSTransitionGroup>
       )
     });
@@ -31,11 +26,21 @@ class TodoList extends Component {
         {!allDone ? (
           <List> {todoMap} </List>
         ) : (
-          <p>Hooray! There's nothing here 🙌 </p>
+          <div>
+            <img src={doneDino} style={styles.dino} />
+            <p>Hooray! There's nothing here</p>
+          </div>
         )}
       </div>
     );
   }
 }
 
+const styles={
+  dino: {
+    paddingTop: 40,
+    height: 120,
+    width: 'auto'
+  }
+}
 export default TodoList;

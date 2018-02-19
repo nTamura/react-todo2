@@ -16,7 +16,6 @@ class TodoModal extends React.Component {
   };
 
   render() {
-
     return (
       <div>
         <Button variant="fab" 
@@ -31,8 +30,7 @@ class TodoModal extends React.Component {
           <div style={styles.modal}>
             <TodoInput addTask={this.props.addTask} 
               handleClose={this.handleClose}
-              style={styles.modalInput} 
-            />
+              style={styles.modalInput} />
           </div>
         </Modal>
       </div>
@@ -48,7 +46,7 @@ const styles = {
     position: 'absolute',
     width: '80%',
     backgroundColor: 'white',
-    // boxShadow: '5 10 8 #888888',
+    borderRadius: 10,
     padding: 30
   },
   modalInput: {

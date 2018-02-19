@@ -6,7 +6,6 @@ class TodoInput extends Component {
   // handleSubmit = (e) => {
   //   // on form submit, page refreshes, need to chain modal close 
   //   e.preventDefault;
-    
   //   this.props.addTask;
   //   this.props.handleClose
   // }
@@ -15,16 +14,12 @@ class TodoInput extends Component {
     const { addTask } = this.props
 
     return (
-      
       <form onSubmit={addTask}>
-        <TextField 
+        <TextField fullWidth autoFocus
           placeholder="Add a todo item"
-          fullWidth
-          autoFocus
           margin="normal"
           name="task"
-          style={styles.input}
-        />
+          style={styles.input} />
       </form>
     );
   }
@@ -32,7 +27,8 @@ class TodoInput extends Component {
 
 const styles = {
   input: {
-
+  
   }
 }
+
 export default TodoInput;
