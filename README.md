@@ -2,9 +2,14 @@
 Revision of my original Todo App with a Material approach. 
 
 ### Screenshots 
-![Inspiration](https://static.collectui.com/shots/2512924/todo-list-large)
-<!-- ![Inspiration](https://static.collectui.com/shots/2512924/todo-list-large)
-![Inspiration](https://static.collectui.com/shots/2512924/todo-list-large) -->
+![screen1](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/screen1.png)
+*main screen, floating 'add' button*
+
+![screen2](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/screen2.png)
+*modal with input* 
+
+![screen3](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/screen3.png)
+*completed all tasks, tooltips on icons*
 
 ### TODO todo
 - filter by status 
