@@ -3,12 +3,15 @@ Revision of my original Todo App with a Material approach.
 
 ### Screenshots 
 ![screen1](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/1.png)
+
 *main screen, floating 'add' button*
 
 ![screen2](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/2.png)
+
 *modal with input* 
 
 ![screen3](https://raw.githubusercontent.com/nTamura/react-todo2/master/src/img/3.png)
+
 *completed all tasks, tooltips on icons*
 
 ### TODO todo
