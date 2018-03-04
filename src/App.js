@@ -24,11 +24,14 @@ const todos = [
   }
 ];
 
+const filter = []
+
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      todos
+      todos,
+      filter: todos
     }
   }
 
@@ -62,14 +65,8 @@ class App extends Component {
     this.setState({
       todos: todos
     })
-  }
+  }  
   
-  FilterTask = () => {
-    let todos = this.state.todos.filter((todo) => {
-      return !todo.complete
-    })
-  }
-
   clearTasks = () => {
     // should trigger snacks to show 'Completed todos cleared'
     // snacks({ vertical: 'bottom', horizontal: 'center' })
@@ -81,10 +78,27 @@ class App extends Component {
     });
   }
 
+  filterTask = (status) => {
+    switch()
+      case: 'all'
+    let allTasks = this.state.todos.filter((todo) => {
+      return todo
+    })
+    let activeTasks = this.state.todos.filter((todo) => {
+      return todo.complete
+    })
+    let doneTasks = this.state.todos.filter((todo) => {
+      return !todo.complete
+    })
+    this.setState({
+      filter: tasks
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Nav clearTasks={this.clearTasks}/>
+        <Nav clearTasks={this.clearTasks} filterTask={this.filterTask} />
         <TodoList todos={this.state.todos} 
           toggleTask={this.toggleTask} 
           delTask={this.delTask} 
